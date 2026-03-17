@@ -1,28 +1,51 @@
 /**
- * HelloApp.java - A simple Java application that Displays "Hello, World!" to
- * the console.
+ * HelloApp.java - A simple Java application that extends the functionality of
+ * HelloAppUC3 by accepting multiple names as command-line arguments and displaying
+ * a personalized greeting for all names. If no names are provided, it defaults to "World".
  *
- * This is the first step in the HelloApp journey, where we start with a basic
- * "Hello, World!" program. The application consists of a single class with a
- * main method that serves as the entry point for the program. The main method
- * uses the System.out.println() function to print the message "Hello, World!"
- * to the console. This application demonstrates fundamental Java concepts such
- * as class declaration, the main method, and standard output.
+ * UC 1: Display "Hello World"
+ * UC 2: Display User Name
+ * UC 3: Provide Default Value
+ * UC 4: Greet Multiple Users - The application should accept multiple names as command-line
+ * arguments and display a personalized greeting for each user.
+ * Usage: java HelloApp [name1] [name2] ... [nameN]
+ * - If names are provided, it will display "Hello, [Name1], [Name2], ...!" to the console.
+ * - If no names are provided, it will display "Hello, World!"
  *
- * @author Hrritika
- * @version 1.0
+ * @author Hrrithika
+ * @version 4.0
+ * @since UC1
  */
 
 /**
- * Key Java Concepts Used:
- * 1. Class Declaration - Defines a blueprint for objects
- * 2. Main Method - Entry point for program execution
- * 3. Static Keyword - Method belongs to the class, not instances
- * 4. String Argument Array - Command-line arguments parameter
- * 5. System.out.println() - Standard output stream for printing
+ * Key Concepts for HelloAppUC4:
+ * 1. Default Values: Providing a fallback value when no input is given
+ * 2. Command-line Arguments: Accessing user input via args[] parameter
+ * 3. Conditional Statements: Using if to check conditions
+ * 4. Boolean Logic: Using logical conditions to control flow
+ * 5. Array Length: Checking the number of command-line arguments
+ * 6. StringBuilder: Efficiently building a string from multiple parts
+ * 7. Looping Constructs: Using for loops to iterate through command-line arguments
+ * 8. String Concatenation: Joining multiple strings with a delimiter (comma and space)
  */
 public class HelloApp {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        // Default name
+        String name = "World";
+
+        // Check if names are provided as command-line arguments
+        if (args.length > 0) {
+            StringBuilder nameBuilder = new StringBuilder();
+            for (int i = 0; i < args.length; i++) {
+                nameBuilder.append(args[i]);
+                // Add a comma and space if it's not the last name
+                if (i < args.length - 1) {
+                    nameBuilder.append(", ");
+                }
+            }
+            name = nameBuilder.toString(); // Use the provided names
+        }
+
+        System.out.println("Hello, " + name + "!");
     }
 }
